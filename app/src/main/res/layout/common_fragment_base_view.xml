@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <com.example.base.base.titlebar.TitleBarWrapper
-        android:id="@+id/ctb_common_title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
     <FrameLayout
         android:id="@+id/fl_common_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/ctb_common_title_bar"/>
+        android:layout_height="match_parent"/>
 
     <com.example.base.base.loading.CommonLoading
         android:id="@+id/cl_common_loading"
@@ -20,4 +14,4 @@
         android:layout_height="match_parent"
         android:visibility="gone"/>
 
-</RelativeLayout>
+</FrameLayout>

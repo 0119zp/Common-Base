@@ -1,55 +1,39 @@
 package com.example.base.base;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import androidx.fragment.app.FragmentManager;
 import com.example.base.R;
 import com.example.base.base.loading.CommonLoading;
 import com.example.base.base.nonetwork.CommonNoNetWorkFragment;
 import com.example.base.base.nonetwork.CommonNoNetWorkUtils;
-import com.example.base.base.titlebar.NormalTitleBar;
-import com.example.base.base.titlebar.TitleBarFactory;
-import com.example.base.base.titlebar.TitleBarWrapper;
 
 /**
  * @author Panpan Zhang
- * @date 2019/3/29 17:53
+ * @date 2019/4/8 13:50
  *
- * description: Activity基类-公用title
+ * description: Fragment 基类
  */
-public abstract class BaseActivity extends BaseZpActivity {
+public abstract class BaseFragment extends BaseZpFragment {
 
     private CommonNoNetWorkFragment mNoNetWorkFragment;
     private CommonLoading mCommonLoading;
     private View contentView;
 
     @Override
-    protected void buildInitLib() {
-
-    }
-
-    @Override
-    public void buildInitView(Bundle savedInstanceState) {
-        setContentView(R.layout.common_activity_base_view);
-        buildOnCreatBundle(savedInstanceState);
-        TitleBarWrapper titleBarWrapper = findViewById(R.id.ctb_common_title_bar);
-        exInitTitleBar(titleBarWrapper.getTitleBarFactory());
-        mCommonLoading = findViewById(R.id.cl_common_loading);
-        FrameLayout commonContent = findViewById(R.id.fl_common_content);
-        contentView = LayoutInflater.from(this).inflate(exInitLayout(), null);
+    protected void buildCreateRootView(View rootView) {
+        super.buildCreateRootView(rootView);
+        mCommonLoading = rootView.findViewById(R.id.cl_common_loading);
+        FrameLayout commonContent = rootView.findViewById(R.id.fl_common_content);
+        contentView = LayoutInflater.from(mActivity).inflate(exInitFragmentLayout(), null);
         commonContent.addView(contentView);
         refreshInitView();
     }
 
     @Override
-    protected void buildOnCreatBundle(Bundle savedInstanceState) {
-
-    }
-
-    @Override
     public void refreshInitView() {
-        if (!CommonNoNetWorkUtils.isConnected(this)) {
+        if (!CommonNoNetWorkUtils.isConnected(mActivity)) {
             CommonNoNetWorkFragment.OnNoNetWorkCallBack callBack = getNoNetWorkCallback();
             if (callBack != null) {
                 showNotNetwork(getNoNetWorkCallback());
@@ -60,16 +44,9 @@ public abstract class BaseActivity extends BaseZpActivity {
             contentView.setVisibility(View.VISIBLE);
         }
         if (mNoNetWorkFragment != null) {
-            CommonNoNetWorkUtils.getInstance().hideNoNetWorkFragment(getSupportFragmentManager(), mNoNetWorkFragment);
+            CommonNoNetWorkUtils.getInstance().hideNoNetWorkFragment(mActivity.getSupportFragmentManager(), mNoNetWorkFragment);
         }
-        exInitView();
-    }
-
-    @Override
-    public void exInitTitleBar(TitleBarFactory titleBarFactory) {
-        NormalTitleBar normalTitleBar = (NormalTitleBar) titleBarFactory.getCommonTitleBar(this);
-        String titleBarLabel = getResources().getString(exTitleBarLabel());
-        normalTitleBar.setTitleLabel(titleBarLabel);
+        exInitFragmentView(contentView);
     }
 
     @Override
@@ -105,8 +82,9 @@ public abstract class BaseActivity extends BaseZpActivity {
         if (contentView != null) {
             contentView.setVisibility(View.GONE);
         }
-        mNoNetWorkFragment = CommonNoNetWorkUtils.getInstance().getNoNetworkFragment(getSupportFragmentManager(), mNoNetWorkFragment);
+        FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
+        mNoNetWorkFragment = CommonNoNetWorkUtils.getInstance().getNoNetworkFragment(fragmentManager, mNoNetWorkFragment);
         mNoNetWorkFragment.setNoNetWorkCallBack(callback);
-        CommonNoNetWorkUtils.getInstance().showNoNetWorkFragment(R.id.fl_common_content, getSupportFragmentManager(), mNoNetWorkFragment);
+        CommonNoNetWorkUtils.getInstance().showNoNetWorkFragment(R.id.fl_common_content, fragmentManager, mNoNetWorkFragment);
     }
 }
