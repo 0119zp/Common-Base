@@ -13,7 +13,7 @@ import com.example.base.base.titlebar.TitleBarFactory;
 import com.example.base.base.titlebar.TitleBarWrapper;
 
 /**
- * @author Panpan Zhang
+ * @author zpan
  * @date 2019/3/29 17:53
  *
  * description: Activity基类-公用title

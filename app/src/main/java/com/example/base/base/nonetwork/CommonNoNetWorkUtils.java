@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 /**
- * @author Panpan Zhang
+ * @author zpan
  */
 public class CommonNoNetWorkUtils {
 

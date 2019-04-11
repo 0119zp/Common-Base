@@ -11,7 +11,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.Nullable;
 
 /**
- * @author Panpan Zhang
+ * @author zpan
  * @date 2019/4/9 16:37
  *
  * description: 公用loading

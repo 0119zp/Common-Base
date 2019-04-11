@@ -10,7 +10,7 @@ import com.example.base.base.nonetwork.CommonNoNetWorkFragment;
 import com.example.base.base.nonetwork.CommonNoNetWorkUtils;
 
 /**
- * @author Panpan Zhang
+ * @author zpan
  * @date 2019/4/8 13:50
  *
  * description: Fragment 基类

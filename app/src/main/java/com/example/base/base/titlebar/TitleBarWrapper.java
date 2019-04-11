@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 import com.example.base.R;
 
 /**
- * @author Panpan Zhang
+ * @author zpan
  * @date 2019/3/29 17:58
  *
  * description: 公用 titlebar 容器

@@ -6,7 +6,7 @@ import com.example.base.R;
 import com.example.base.base.BaseFragment;
 
 /**
- * @author Panpan Zhang
+ * @author zpan
  * @date 2019/4/9 10:11
  *
  * description: 无网络 Fragment

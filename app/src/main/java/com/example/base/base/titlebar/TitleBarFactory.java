@@ -5,7 +5,7 @@ import android.content.Context;
 import android.widget.LinearLayout;
 
 /**
- * @author Panpan Zhang
+ * @author zpan
  * @date 2019/4/3 19:55
  *
  * description: title bar 工厂类

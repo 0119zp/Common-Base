@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import com.example.base.R;
 
 /**
- * @author Panpan Zhang
+ * @author zpan
  * @date 2019/4/8 13:49
  *
  * description: fragment 基类

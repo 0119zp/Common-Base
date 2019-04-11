@@ -5,12 +5,10 @@ import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import com.example.base.R;
 import com.example.base.base.titlebar.TitleBarFactory;
 
 /**
- * @author Panpan Zhang
+ * @author zpan
  * @date 2019/3/29 17:28
  *
  * description: Activity 基类
