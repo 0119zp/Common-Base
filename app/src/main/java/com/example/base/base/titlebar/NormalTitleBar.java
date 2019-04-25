@@ -1,10 +1,8 @@
 package com.example.base.base.titlebar;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.base.R;
 import com.example.base.icon.IconFontTextView;
@@ -22,17 +20,16 @@ public class NormalTitleBar extends BaseTitleBar {
     private TextView mTitleLabel;
 
     private Activity mActivity;
+    private View normalTitleBarView;
     private View.OnClickListener mTitleLeftClickLitener;
 
-    public NormalTitleBar(Context context, Activity activity, LinearLayout titleView) {
+    public NormalTitleBar(Activity activity) {
         this.mActivity = activity;
-        titleView.removeAllViews();
-        View normalTitleBarView = LayoutInflater.from(context).inflate(R.layout.common_title_bar_normal, titleView, false);
+        normalTitleBarView = LayoutInflater.from(activity).inflate(R.layout.common_title_bar_normal, null);
 
         mTitleLeft = normalTitleBarView.findViewById(R.id.common_title_bar_left_icon);
         mTitleLabel = normalTitleBarView.findViewById(R.id.common_title_bar_label);
         mTitleRight = normalTitleBarView.findViewById(R.id.common_title_bar_right_icon);
-
         // 右侧默认隐藏
         mTitleRight.setVisibility(View.GONE);
         // 左侧默认返回
@@ -44,7 +41,11 @@ public class NormalTitleBar extends BaseTitleBar {
                 }
             });
         }
-        titleView.addView(normalTitleBarView);
+    }
+
+    @Override
+    public View getContentView() {
+        return normalTitleBarView;
     }
 
     /**

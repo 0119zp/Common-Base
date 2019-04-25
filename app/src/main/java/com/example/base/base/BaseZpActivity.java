@@ -3,6 +3,7 @@ package com.example.base.base;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.base.base.titlebar.TitleBarFactory;
@@ -68,7 +69,7 @@ public abstract class BaseZpActivity extends AppCompatActivity {
      *
      * @param titleBarFactory 公用titlebar工厂类
      */
-    public abstract void exInitTitleBar(TitleBarFactory titleBarFactory);
+    protected abstract View exInitTitleBar(TitleBarFactory titleBarFactory);
 
     /**
      * 初始化控件参数： 在该方法中，可以对已绑定的控件数据初始化
@@ -94,4 +95,14 @@ public abstract class BaseZpActivity extends AppCompatActivity {
      * 隐藏Loading
      */
     public abstract void hindCommonLoading();
+
+    /**
+     * 显示Toast
+     */
+    public abstract void showCommonToast(String msg);
+
+    /**
+     * 显示Toast
+     */
+    public abstract void showCommonToast(int msgId);
 }

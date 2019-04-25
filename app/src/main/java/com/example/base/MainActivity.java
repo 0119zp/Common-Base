@@ -2,6 +2,9 @@ package com.example.base;
 
 import com.example.base.base.BaseActivity;
 
+/**
+ * @author Zpan
+ */
 public class MainActivity extends BaseActivity {
 
     @Override

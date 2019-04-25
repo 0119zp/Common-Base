@@ -71,4 +71,14 @@ public abstract class BaseZpFragment extends Fragment {
      * 隐藏Loading
      */
     public abstract void hindCommonLoading();
+
+    /**
+     * 显示Toast
+     */
+    public abstract void showCommonToast(String msg);
+
+    /**
+     * 显示Toast
+     */
+    public abstract void showCommonToast(int msgId);
 }

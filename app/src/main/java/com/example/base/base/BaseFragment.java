@@ -1,5 +1,6 @@
 package com.example.base.base;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -8,6 +9,7 @@ import com.example.base.R;
 import com.example.base.base.loading.CommonLoading;
 import com.example.base.base.nonetwork.CommonNoNetWorkFragment;
 import com.example.base.base.nonetwork.CommonNoNetWorkUtils;
+import com.example.base.utils.CommonToast;
 
 /**
  * @author zpan
@@ -61,6 +63,22 @@ public abstract class BaseFragment extends BaseZpFragment {
         if (mCommonLoading.getVisibility() == View.VISIBLE) {
             mCommonLoading.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void showCommonToast(String msg) {
+        if (TextUtils.isEmpty(msg)) {
+            return;
+        }
+        CommonToast.getInstance(mActivity).setText(msg).show();
+    }
+
+    @Override
+    public void showCommonToast(int msgId) {
+        if (msgId <= 0) {
+            return;
+        }
+        CommonToast.getInstance(mActivity).setTextId(msgId).show();
     }
 
     protected CommonNoNetWorkFragment.OnNoNetWorkCallBack getNoNetWorkCallback() {

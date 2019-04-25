@@ -12,13 +12,25 @@ import com.example.base.R;
  */
 public class CommonToast extends Toast {
 
+    private volatile static CommonToast instance = null;
     private TextView mToastText;
     private Context mContext;
 
-    public CommonToast(Context context) {
+    private CommonToast(Context context) {
         super(context);
         this.mContext = context;
         initToast(context);
+    }
+
+    public static CommonToast getInstance(Context context) {
+        if (instance == null) {
+            synchronized (CommonToast.class) {
+                if (instance == null) {
+                    instance = new CommonToast(context);
+                }
+            }
+        }
+        return instance;
     }
 
     private void initToast(Context context) {
