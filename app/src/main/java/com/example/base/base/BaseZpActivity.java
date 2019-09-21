@@ -1,12 +1,16 @@
 package com.example.base.base;
 
+import android.app.Activity;
 import android.content.pm.ActivityInfo;
+import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.base.base.titlebar.TitleBarFactory;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 /**
  * @author zpan
@@ -19,8 +23,16 @@ public abstract class BaseZpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 默认页面竖屏
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        /**
+         *  修复  8.0 透明的Activity，不能固定它的方向，因为它的方向其实是依赖其父Activity的（因为透明)
+         *  https://blog.csdn.net/starry_eve/article/details/82777160
+         */
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.O && isTranslucentOrFloating()) {
+            fixOrientation();
+        } else {
+            // 默认页面竖屏
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         // 6.0以上设置status bar颜色及文字颜色，其余版本使用默认
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             //int statusColor = ContextCompat.getColor(this, R.color.common_title_bar_bg);
@@ -29,6 +41,46 @@ public abstract class BaseZpActivity extends AppCompatActivity {
         }
         buildInitLib();
         buildInitView(savedInstanceState);
+    }
+
+    private boolean fixOrientation() {
+        try {
+            Field field = Activity.class.getDeclaredField("mActivityInfo");
+            field.setAccessible(true);
+            ActivityInfo o = (ActivityInfo) field.get(this);
+            o.screenOrientation = -1;
+            field.setAccessible(false);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public void setRequestedOrientation(int requestedOrientation) {
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.O && isTranslucentOrFloating()) {
+            return;
+        }
+        super.setRequestedOrientation(requestedOrientation);
+    }
+
+    /**
+     * 先判断，如果透明，直接把方向改为SCREEN_ORIENTATION_UNSPECIFIED：
+     */
+    private boolean isTranslucentOrFloating() {
+        boolean isTranslucentOrFloating = false;
+        try {
+            int[] styleableRes = (int[]) Class.forName("com.android.internal.R$styleable").getField("Window").get(null);
+            final TypedArray ta = obtainStyledAttributes(styleableRes);
+            Method m = ActivityInfo.class.getMethod("isTranslucentOrFloating", TypedArray.class);
+            m.setAccessible(true);
+            isTranslucentOrFloating = (boolean) m.invoke(null, ta);
+            m.setAccessible(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return isTranslucentOrFloating;
     }
 
     /**
