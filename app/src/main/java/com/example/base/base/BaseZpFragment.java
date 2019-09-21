@@ -58,11 +58,6 @@ public abstract class BaseZpFragment extends Fragment {
     public abstract void refreshInitView();
 
     /**
-     * 无网络页面刷新
-     */
-    public abstract void refreshNoNetWork();
-
-    /**
      * 展示 Loading
      */
     public abstract void showCommonLoading();

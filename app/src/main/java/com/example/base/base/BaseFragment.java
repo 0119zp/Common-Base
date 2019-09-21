@@ -4,11 +4,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import androidx.fragment.app.FragmentManager;
 import com.example.base.R;
 import com.example.base.base.loading.CommonLoading;
-import com.example.base.base.nonetwork.CommonNoNetWorkFragment;
-import com.example.base.base.nonetwork.CommonNoNetWorkUtils;
 import com.example.base.utils.CommonToast;
 
 /**
@@ -19,7 +16,6 @@ import com.example.base.utils.CommonToast;
  */
 public abstract class BaseFragment extends BaseZpFragment {
 
-    private CommonNoNetWorkFragment mNoNetWorkFragment;
     private CommonLoading mCommonLoading;
     private View contentView;
 
@@ -35,19 +31,6 @@ public abstract class BaseFragment extends BaseZpFragment {
 
     @Override
     public void refreshInitView() {
-        if (!CommonNoNetWorkUtils.isConnected(mActivity)) {
-            CommonNoNetWorkFragment.OnNoNetWorkCallBack callBack = getNoNetWorkCallback();
-            if (callBack != null) {
-                showNotNetwork(getNoNetWorkCallback());
-                return;
-            }
-        }
-        if (contentView != null) {
-            contentView.setVisibility(View.VISIBLE);
-        }
-        if (mNoNetWorkFragment != null) {
-            CommonNoNetWorkUtils.getInstance().hideNoNetWorkFragment(mActivity.getSupportFragmentManager(), mNoNetWorkFragment);
-        }
         exInitFragmentView(contentView);
     }
 
@@ -79,30 +62,5 @@ public abstract class BaseFragment extends BaseZpFragment {
             return;
         }
         CommonToast.getInstance(mActivity).setTextId(msgId).show();
-    }
-
-    protected CommonNoNetWorkFragment.OnNoNetWorkCallBack getNoNetWorkCallback() {
-        return new CommonNoNetWorkFragment.OnNoNetWorkCallBack() {
-            @Override
-            public void clickRefresh() {
-                refreshInitView();
-                refreshNoNetWork();
-            }
-        };
-    }
-
-    @Override
-    public void refreshNoNetWork() {
-
-    }
-
-    private void showNotNetwork(CommonNoNetWorkFragment.OnNoNetWorkCallBack callback) {
-        if (contentView != null) {
-            contentView.setVisibility(View.GONE);
-        }
-        FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
-        mNoNetWorkFragment = CommonNoNetWorkUtils.getInstance().getNoNetworkFragment(fragmentManager, mNoNetWorkFragment);
-        mNoNetWorkFragment.setNoNetWorkCallBack(callback);
-        CommonNoNetWorkUtils.getInstance().showNoNetWorkFragment(R.id.fl_common_content, fragmentManager, mNoNetWorkFragment);
     }
 }

@@ -21,11 +21,6 @@ public class CommonNoNetWorkFragment extends BaseFragment {
     }
 
     @Override
-    protected OnNoNetWorkCallBack getNoNetWorkCallback() {
-        return null;
-    }
-
-    @Override
     public void exInitFragmentView(View contentView) {
         TextView mTvRefresh = contentView.findViewById(R.id.tv_not_work_refresh);
 

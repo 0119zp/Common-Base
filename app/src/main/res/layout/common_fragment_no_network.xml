@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f8f8f8"
     android:gravity="center"
-    android:layout_height="match_parent">
-
-    <com.example.base.icon.IconFontTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/icon_font_share"
-        android:textSize="100sp"/>
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_not_work_refresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="没有数据"/>
+        android:text="无网络页面，点我刷新"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"/>
 
 </LinearLayout>

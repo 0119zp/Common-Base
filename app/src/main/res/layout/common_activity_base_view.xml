@@ -6,7 +6,7 @@
     <com.example.base.base.titlebar.TitleBarWrapper
         android:id="@+id/ctb_common_title_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="44dp"/>
 
     <FrameLayout
         android:id="@+id/fl_common_content"

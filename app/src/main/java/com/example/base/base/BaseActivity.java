@@ -24,7 +24,6 @@ public abstract class BaseActivity extends BaseZpActivity {
 
     private CommonNoNetWorkFragment mNoNetWorkFragment;
     private CommonLoading mCommonLoading;
-    private View contentView;
 
     @Override
     protected void buildInitLib() {
@@ -45,7 +44,7 @@ public abstract class BaseActivity extends BaseZpActivity {
         }
         mCommonLoading = findViewById(R.id.cl_common_loading);
         FrameLayout commonContent = findViewById(R.id.fl_common_content);
-        contentView = LayoutInflater.from(this).inflate(exInitLayout(), null);
+        View contentView = LayoutInflater.from(this).inflate(exInitLayout(), null);
         commonContent.addView(contentView);
         refreshInitView();
     }
@@ -57,15 +56,10 @@ public abstract class BaseActivity extends BaseZpActivity {
 
     @Override
     public void refreshInitView() {
-        if (!CommonNoNetWorkUtils.isConnected(this)) {
-            CommonNoNetWorkFragment.OnNoNetWorkCallBack callBack = getNoNetWorkCallback();
-            if (callBack != null) {
-                showNotNetwork(getNoNetWorkCallback());
-                return;
-            }
-        }
-        if (contentView != null) {
-            contentView.setVisibility(View.VISIBLE);
+        CommonNoNetWorkFragment.OnNoNetWorkCallBack callBack = getNoNetWorkCallback();
+        if (callBack != null && !CommonNoNetWorkUtils.isConnected(this)) {
+            showNotNetwork(callBack);
+            return;
         }
         if (mNoNetWorkFragment != null) {
             CommonNoNetWorkUtils.getInstance().hideNoNetWorkFragment(getSupportFragmentManager(), mNoNetWorkFragment);
@@ -116,7 +110,7 @@ public abstract class BaseActivity extends BaseZpActivity {
         CommonToast.getInstance(this).setTextId(msgId).show();
     }
 
-    protected CommonNoNetWorkFragment.OnNoNetWorkCallBack getNoNetWorkCallback() {
+    public CommonNoNetWorkFragment.OnNoNetWorkCallBack getNoNetWorkCallback() {
         return new CommonNoNetWorkFragment.OnNoNetWorkCallBack() {
             @Override
             public void clickRefresh() {
@@ -132,10 +126,9 @@ public abstract class BaseActivity extends BaseZpActivity {
     }
 
     private void showNotNetwork(CommonNoNetWorkFragment.OnNoNetWorkCallBack callback) {
-        if (contentView != null) {
-            contentView.setVisibility(View.GONE);
+        if (mNoNetWorkFragment == null) {
+            mNoNetWorkFragment = CommonNoNetWorkUtils.getInstance().getNoNetworkFragment(getSupportFragmentManager(), mNoNetWorkFragment);
         }
-        mNoNetWorkFragment = CommonNoNetWorkUtils.getInstance().getNoNetworkFragment(getSupportFragmentManager(), mNoNetWorkFragment);
         mNoNetWorkFragment.setNoNetWorkCallBack(callback);
         CommonNoNetWorkUtils.getInstance().showNoNetWorkFragment(R.id.fl_common_content, getSupportFragmentManager(), mNoNetWorkFragment);
     }
