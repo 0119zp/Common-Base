@@ -3,12 +3,14 @@ package com.example.base.base;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.base.base.titlebar.TitleBarFactory;
+import com.example.base.theme.StatusBarCompat;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -33,12 +35,8 @@ public abstract class BaseZpActivity extends AppCompatActivity {
             // 默认页面竖屏
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        // 6.0以上设置status bar颜色及文字颜色，其余版本使用默认
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            //int statusColor = ContextCompat.getColor(this, R.color.common_title_bar_bg);
-            //StatusUtils.setStatusColor(this, statusColor);
-            //StatusUtils.setLightStatusBar(this, true);
-        }
+        // 沉浸式状态栏, 设置statusBar颜色及文字颜色模式，默认为白色底，深色文字模式
+        StatusBarCompat.setStatusBarColorAndLightMode(this, Color.WHITE, false);
         buildInitLib();
         buildInitView(savedInstanceState);
     }
