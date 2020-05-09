@@ -1,5 +1,6 @@
 package com.zpan.base.base;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.content.res.TypedArray;
@@ -22,6 +23,7 @@ import java.lang.reflect.Method;
  */
 public abstract class BaseZpActivity extends AppCompatActivity {
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

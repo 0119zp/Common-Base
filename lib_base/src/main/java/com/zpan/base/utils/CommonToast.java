@@ -16,7 +16,7 @@ public class CommonToast extends Toast {
     private TextView mToastText;
     private Context mContext;
 
-    private CommonToast(Context context) {
+    public CommonToast(Context context) {
         super(context);
         this.mContext = context;
         initToast(context);
