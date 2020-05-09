@@ -1,11 +1,11 @@
-package com.example.base.utils;
+package com.zpan.base.utils;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.base.R;
+import com.zpan.base.R;
 
 /**
  * description: 公用的Toast

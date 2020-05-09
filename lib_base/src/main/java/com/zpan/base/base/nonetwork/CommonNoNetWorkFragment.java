@@ -1,9 +1,9 @@
-package com.example.base.base.nonetwork;
+package com.zpan.base.base.nonetwork;
 
 import android.view.View;
 import android.widget.TextView;
-import com.example.base.R;
-import com.example.base.base.BaseFragment;
+import com.zpan.base.R;
+import com.zpan.base.base.BaseFragment;
 
 /**
  * @author zpan

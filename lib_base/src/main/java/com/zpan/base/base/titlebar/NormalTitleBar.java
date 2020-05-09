@@ -1,11 +1,11 @@
-package com.example.base.base.titlebar;
+package com.zpan.base.base.titlebar;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import com.example.base.R;
-import com.example.base.icon.IconFontTextView;
+import com.zpan.base.R;
+import com.zpan.base.icon.IconFontTextView;
 
 /**
  * @author zpan

@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <com.example.base.base.loading.CommonLoading
+    <com.zpan.base.base.loading.CommonLoading
         android:id="@+id/cl_common_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

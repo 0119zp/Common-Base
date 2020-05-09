@@ -1,6 +1,6 @@
 package com.example.base;
 
-import com.example.base.base.BaseActivity;
+import com.zpan.base.base.BaseActivity;
 
 /**
  * @author Zpan

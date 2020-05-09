@@ -1,12 +1,12 @@
-package com.example.base.base;
+package com.zpan.base.base;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import com.example.base.R;
-import com.example.base.base.loading.CommonLoading;
-import com.example.base.utils.CommonToast;
+import com.zpan.base.R;
+import com.zpan.base.base.loading.CommonLoading;
+import com.zpan.base.utils.CommonToast;
 
 /**
  * @author zpan

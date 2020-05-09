@@ -1,10 +1,10 @@
-package com.example.base.base.titlebar;
+package com.zpan.base.base.titlebar;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import com.example.base.R;
+import com.zpan.base.R;
 
 /**
  * @author zpan

@@ -1,4 +1,4 @@
-package com.example.base.base.nonetwork;
+package com.zpan.base.base.nonetwork;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

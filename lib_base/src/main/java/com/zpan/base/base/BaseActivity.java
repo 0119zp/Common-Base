@@ -1,18 +1,18 @@
-package com.example.base.base;
+package com.zpan.base.base;
 
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import com.example.base.R;
-import com.example.base.base.loading.CommonLoading;
-import com.example.base.base.nonetwork.CommonNoNetWorkFragment;
-import com.example.base.base.nonetwork.CommonNoNetWorkUtils;
-import com.example.base.base.titlebar.NormalTitleBar;
-import com.example.base.base.titlebar.TitleBarFactory;
-import com.example.base.base.titlebar.TitleBarWrapper;
-import com.example.base.utils.CommonToast;
+import com.zpan.base.R;
+import com.zpan.base.base.loading.CommonLoading;
+import com.zpan.base.base.nonetwork.CommonNoNetWorkFragment;
+import com.zpan.base.base.nonetwork.CommonNoNetWorkUtils;
+import com.zpan.base.base.titlebar.NormalTitleBar;
+import com.zpan.base.base.titlebar.TitleBarFactory;
+import com.zpan.base.base.titlebar.TitleBarWrapper;
+import com.zpan.base.utils.CommonToast;
 
 /**
  * @author zpan

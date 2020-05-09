@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.base.base.titlebar.TitleBarWrapper
+    <com.zpan.base.base.titlebar.TitleBarWrapper
         android:id="@+id/ctb_common_title_bar"
         android:layout_width="match_parent"
         android:layout_height="44dp"/>
@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/ctb_common_title_bar"/>
 
-    <com.example.base.base.loading.CommonLoading
+    <com.zpan.base.base.loading.CommonLoading
         android:id="@+id/cl_common_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

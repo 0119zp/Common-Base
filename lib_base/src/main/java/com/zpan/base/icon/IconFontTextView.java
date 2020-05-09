@@ -1,4 +1,4 @@
-package com.example.base.icon;
+package com.zpan.base.icon;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -6,7 +6,7 @@ import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatTextView;
-import com.example.base.R;
+import com.zpan.base.R;
 
 /**
  * IconFontTextView

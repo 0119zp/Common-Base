@@ -1,4 +1,4 @@
-package com.example.base.theme;
+package com.zpan.base.theme;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -11,7 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import androidx.annotation.ColorInt;
-import com.example.base.R;
+import com.zpan.base.R;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 

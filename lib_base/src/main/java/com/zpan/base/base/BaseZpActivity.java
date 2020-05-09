@@ -1,4 +1,4 @@
-package com.example.base.base;
+package com.zpan.base.base;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
@@ -9,8 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.base.base.titlebar.TitleBarFactory;
-import com.example.base.theme.StatusBarCompat;
+import com.zpan.base.base.titlebar.TitleBarFactory;
+import com.zpan.base.theme.StatusBarCompat;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 

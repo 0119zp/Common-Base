@@ -1,4 +1,4 @@
-package com.example.base.base.loading;
+package com.zpan.base.base.loading;
 
 import android.content.Context;
 import android.graphics.Color;
